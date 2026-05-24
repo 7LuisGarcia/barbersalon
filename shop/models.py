@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Appointment(models.Model):
     SERVICE_CHOICES = [
         ("Haircut", "Haircut"),
@@ -10,9 +11,9 @@ class Appointment(models.Model):
     ]
 
     BARBER_CHOICES = [
-        ("Carlos", "Carlos"),
-        ("Mike", "Mike"),
-        ("Luis", "Luis"),
+        ("Gina", "Gina"),
+        ("Tere", "Tere"),
+        ("Third", "Third"),
     ]
 
     name = models.CharField(max_length=100)
@@ -26,4 +27,3 @@ class Appointment(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.service}"
-# Create your models here.
