@@ -52,6 +52,16 @@
                 {{ form.message }}
             </div>
 
+            <div class="mb-4">
+                <label class="form-label fw-bold">Payment Method</label>
+
+                <select name="payment_method" class="form-select" required>
+                    <option value="">Choose payment method</option>
+                    <option value="cash">Cash - Pay at salon</option>
+                    <option value="zelle">Zelle - Pay at Salon or Online</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-gold w-100">
                 Book Now
             </button>

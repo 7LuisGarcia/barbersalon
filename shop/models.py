@@ -25,5 +25,14 @@ class Appointment(models.Model):
     time = models.TimeField()
     message = models.TextField(blank=True)
 
+    payment_method = models.CharField(
+    max_length=20,
+    choices=[
+        ("cash", "Cash"),
+        ("zelle", "Zelle"),
+    ],
+    default="cash"
+)
+
     def __str__(self):
         return f"{self.name} - {self.service}"
