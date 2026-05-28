@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow border-0 rounded-4 p-4">
+
+        <h1 class="fw-bold mb-4">New Appointment</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button class="btn btn-dark">
+                Save Appointment
+            </button>
+
+            <a href="{% url 'shop:appointment_list' %}" class="btn btn-secondary">
+                Back
+            </a>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

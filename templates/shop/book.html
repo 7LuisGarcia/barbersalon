@@ -14,7 +14,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                {{ form.name }}
+                {{ form.customer_name }}
             </div>
 
             <div class="mb-3">
@@ -34,32 +34,27 @@
 
             <div class="mb-3">
                 <label class="form-label">Barber</label>
-                {{ form.barber }}
+                {{ form.barber_name }}
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Date</label>
-                {{ form.date }}
+                {{ form.appointment_date }}
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Time</label>
-                {{ form.time }}
+                {{ form.appointment_time }}
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Message</label>
-                {{ form.message }}
+                <label class="form-label">Notes</label>
+                {{ form.notes }}
             </div>
 
             <div class="mb-4">
                 <label class="form-label fw-bold">Payment Method</label>
-
-                <select name="payment_method" class="form-select" required>
-                    <option value="">Choose payment method</option>
-                    <option value="cash">Cash - Pay at salon</option>
-                    <option value="zelle">Zelle - Pay at Salon or Online</option>
-                </select>
+                {{ form.payment_method }}
             </div>
 
             <button type="submit" class="btn btn-gold w-100">

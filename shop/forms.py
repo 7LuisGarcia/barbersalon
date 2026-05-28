@@ -6,18 +6,19 @@ class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = [
-            "name",
+            "customer_name",
             "email",
             "phone",
             "service",
-            "barber",
-            "date",
-            "time",
-            "message",
+            "barber_name",
+            "appointment_date",
+            "appointment_time",
+            "notes",
+            "payment_method",
         ]
 
         widgets = {
-            "date": forms.DateInput(attrs={"type": "date"}),
-            "time": forms.TimeInput(attrs={"type": "time"}),
-            "message": forms.Textarea(attrs={"rows": 4}),
+            "appointment_date": forms.DateInput(attrs={"type": "date", "class": "form-control"}),
+            "appointment_time": forms.TimeInput(attrs={"type": "time", "class": "form-control"}),
+            "notes": forms.Textarea(attrs={"rows": 4, "class": "form-control"}),
         }
