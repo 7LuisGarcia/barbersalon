@@ -21,43 +21,45 @@
     <div class="row g-2 mb-3">
         <div class="col"><input type="text" id="search" class="form-control" placeholder="Search name, barber, service…" /></div>
         <div class="col-auto">
-        <select id="f-barber" class="form-select">
-            <option value="">All barbers</option>
-            <option>Gina</option>
-            <option>Tere</option>
-            <option>Third</option>
-        </select>
+            <select id="f-barber" class="form-select">
+                <option value="">All barbers</option>
+                <option>Gina</option>
+                <option>Tere</option>
+                <option>Third</option>
+            </select>
         </div>
         <div class="col-auto">
-        <select id="f-status" class="form-select">
-            <option value="">All statuses</option>
-            <option value="pending">Pending</option>
-            <option value="confirmed">Confirmed</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-        </select>
+            <select id="f-status" class="form-select">
+                <option value="">All statuses</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
         </div>
         <div class="col-auto">
-        <input type="date" id="f-date" class="form-control" />
+            <input type="date" id="f-date" class="form-control" />
         </div>
     </div>
 
     <!-- Table -->
     <div class="table-responsive">
         <table class="table table-bordered table-hover align-middle">
-        <thead class="table-dark">
-            <tr>
-            <th onclick="sortBy('customer_name')" style="cursor:pointer">Customer <span id="sort-customer_name"></span></th>
-            <th onclick="sortBy('barber_name')" style="cursor:pointer">Barber <span id="sort-barber_name"></span></th>
-            <th onclick="sortBy('service')" style="cursor:pointer">Service <span id="sort-service"></span></th>
-            <th onclick="sortBy('appointment_date')" style="cursor:pointer">Date <span id="sort-appointment_date">↑</span></th>
-            <th onclick="sortBy('appointment_time')" style="cursor:pointer">Time <span id="sort-appointment_time"></span></th>
-            <th onclick="sortBy('payment_method')" style="cursor:pointer">Payment <span id="sort-payment_method"></span></th>
-            <th onclick="sortBy('status')" style="cursor:pointer">Status <span id="sort-status"></span></th>
-            <th>Notes</th>
-            </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
+            <thead class="table-dark">
+                <tr>
+                    <th onclick="sortBy('customer_name')" style="cursor:pointer">Customer <span id="sort-customer_name"></span></th>
+                    <th onclick="sortBy('customer_phone')" style="cursor:pointer">Phone <span id="sort-customer_phone"></span></th>
+                    <th onclick="sortBy('barber_name')" style="cursor:pointer">Barber <span id="sort-barber_name"></span></th>
+                    <th onclick="sortBy('service')" style="cursor:pointer">Service <span id="sort-service"></span></th>
+                    <th onclick="sortBy('appointment_date')" style="cursor:pointer">Date <span id="sort-appointment_date">↑</span></th>
+                    <th onclick="sortBy('appointment_time')" style="cursor:pointer">Time <span id="sort-appointment_time"></span></th>
+                    <th onclick="sortBy('payment_method')" style="cursor:pointer">Payment <span id="sort-payment_method"></span></th>
+                    <th onclick="sortBy('status')" style="cursor:pointer">Status <span id="sort-status"></span></th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
         </table>
     </div>
 
@@ -67,56 +69,58 @@
         <div id="avail-content"><p class="text-muted">Select a date and barber above to see open slots.</p></div>
     </div>
 
-    </div>
+</div>
 
-    <script>
-    const TODAY = "{{ today|date:'Y-m-d' }}";
-    const RAW = [
-    {% for a in appointments %}
-    {
-        customer_name:    "{{ a.customer_name|escapejs }}",
-        barber_name:      "{{ a.barber_name|escapejs }}",
-        service:          "{{ a.service|escapejs }}",
-        appointment_date: "{{ a.appointment_date|date:'Y-m-d' }}",
-        appointment_time: "{{ a.appointment_time|time:'H:i' }}",
-        payment_method:   "{{ a.payment_method|escapejs }}",
-        status:           "{{ a.status|escapejs }}",
-        notes:            "{{ a.notes|default_if_none:''|escapejs }}"
-    }{% if not forloop.last %},{% endif %}
-    {% endfor %}
-    ];
+<script>
+const TODAY = "{{ today|date:'Y-m-d' }}";
+let DATA = [
+{% for a in appointments %}
+{
+    id:               {{ a.id }},
+    customer_name:    "{{ a.customer_name|escapejs }}",
+    customer_phone:   "{{ a.customer_phone|default_if_none:''|escapejs }}",
+    barber_name:      "{{ a.barber_name|escapejs }}",
+    service:          "{{ a.service|escapejs }}",
+    appointment_date: "{{ a.appointment_date|date:'Y-m-d' }}",
+    appointment_time: "{{ a.appointment_time|time:'H:i' }}",
+    payment_method:   "{{ a.payment_method|escapejs }}",
+    status:           "{{ a.status|escapejs }}",
+    notes:            "{{ a.notes|default_if_none:''|escapejs }}"
+}{% if not forloop.last %},{% endif %}
+{% endfor %}
+];
 
-    const ALL_SLOTS = ["9:00 AM","9:30 AM","10:00 AM","10:30 AM","11:00 AM","11:30 AM",
+const ALL_SLOTS = ["9:00 AM","9:30 AM","10:00 AM","10:30 AM","11:00 AM","11:30 AM",
     "12:00 PM","12:30 PM","1:00 PM","1:30 PM","2:00 PM","2:30 PM",
     "3:00 PM","3:30 PM","4:00 PM","4:30 PM","5:00 PM"];
 
-    const STATUS_BADGE = {
+const STATUS_BADGE = {
     pending:   "warning",
     confirmed: "primary",
     completed: "success",
     cancelled: "danger",
-    };
+};
 
-    let sortKey = "appointment_date", sortDir = 1;
+let sortKey = "appointment_date", sortDir = 1;
 
-    function fmt12(t) {
+function fmt12(t) {
     const [h, m] = t.split(":");
     const hh = +h;
     return `${hh > 12 ? hh - 12 : hh || 12}:${m} ${hh >= 12 ? "PM" : "AM"}`;
-    }
+}
 
-    function fmtDate(d) {
+function fmtDate(d) {
     const [y, mo, day] = d.split("-");
     return `${mo}/${day}/${y}`;
-    }
+}
 
-    function getFiltered() {
+function getFiltered() {
     const q      = document.getElementById("search").value.toLowerCase();
     const barber = document.getElementById("f-barber").value;
     const status = document.getElementById("f-status").value;
     const date   = document.getElementById("f-date").value;
 
-    return RAW.filter(r => {
+    return DATA.filter(r => {
         if (q && ![r.customer_name, r.barber_name, r.service].some(v => v.toLowerCase().includes(q))) return false;
         if (barber && r.barber_name !== barber) return false;
         if (status && r.status !== status) return false;
@@ -126,9 +130,35 @@
         const av = a[sortKey] || "", bv = b[sortKey] || "";
         return av < bv ? -sortDir : av > bv ? sortDir : 0;
     });
-    }
+}
 
-    function render() {
+function deleteAppointment(id, name) {
+    if (!confirm(`Delete appointment for "${name}"? This cannot be undone.`)) return;
+
+    fetch(`/appointments/${id}/delete/`, {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": getCookie("csrftoken"),
+            "Content-Type": "application/json",
+        },
+    })
+    .then(res => {
+        if (res.ok) {
+            DATA = DATA.filter(r => r.id !== id);
+            render();
+        } else {
+            alert("Failed to delete appointment. Please try again.");
+        }
+    })
+    .catch(() => alert("Network error. Please try again."));
+}
+
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+    return match ? decodeURIComponent(match[2]) : "";
+}
+
+function render() {
     const rows = getFiltered();
 
     document.getElementById("s-total").textContent     = rows.length;
@@ -138,11 +168,12 @@
 
     const tb = document.getElementById("tbody");
     if (!rows.length) {
-        tb.innerHTML = `<tr><td colspan="8" class="text-center text-muted py-4">No appointments found.</td></tr>`;
+        tb.innerHTML = `<tr><td colspan="10" class="text-center text-muted py-4">No appointments found.</td></tr>`;
     } else {
         tb.innerHTML = rows.map(r => `
         <tr>
             <td>${r.customer_name}</td>
+            <td>${r.customer_phone || "—"}</td>
             <td>${r.barber_name}</td>
             <td>${r.service}</td>
             <td>${fmtDate(r.appointment_date)}</td>
@@ -150,6 +181,12 @@
             <td style="text-transform:capitalize">${r.payment_method}</td>
             <td><span class="badge bg-${STATUS_BADGE[r.status] || 'secondary'}">${r.status}</span></td>
             <td>${r.notes || "—"}</td>
+            <td>
+                <button class="btn btn-danger btn-sm"
+                    onclick="deleteAppointment(${r.id}, '${r.customer_name.replace(/'/g, "\\'")}')">
+                    🗑 Delete
+                </button>
+            </td>
         </tr>`).join("");
     }
 
@@ -163,8 +200,8 @@
     }
 
     const taken = new Set(
-        RAW.filter(r => r.appointment_date === date && r.barber_name === barber && r.status !== "cancelled")
-        .map(r => fmt12(r.appointment_time))
+        DATA.filter(r => r.appointment_date === date && r.barber_name === barber && r.status !== "cancelled")
+            .map(r => fmt12(r.appointment_time))
     );
 
     const free = ALL_SLOTS.filter(s => !taken.has(s)).length;
@@ -178,18 +215,18 @@
             <span class="badge ${taken.has(s) ? "bg-danger text-decoration-line-through" : "bg-success"}">${s}</span>
         `).join("")}
         </div>`;
-    }
+}
 
-    function sortBy(key) {
+function sortBy(key) {
     if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
     document.querySelectorAll("[id^='sort-']").forEach(el => el.textContent = "");
     document.getElementById("sort-" + key).textContent = sortDir === 1 ? " ↑" : " ↓";
     render();
-    }
+}
 
-    ["search", "f-barber", "f-status", "f-date"].forEach(id =>
+["search", "f-barber", "f-status", "f-date"].forEach(id =>
     document.getElementById(id).addEventListener("input", render)
-    );
+);
 
 render();
 </script>

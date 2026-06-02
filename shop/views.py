@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.http import JsonResponse, HttpResponseNotAllowed
 from django.utils import timezone
 
 from .models import Appointment
@@ -21,12 +22,14 @@ def barbers(request):
 def contact(request):
     return render(request, "shop/contact.html")
 
+
 def appointment_list(request):
     appointments = Appointment.objects.all().order_by("appointment_date", "appointment_time")
     return render(request, "shop/appointments.html", {
         "appointments": appointments,
         "today": timezone.now().date(),
     })
+
 
 def book(request):
     if request.method == "POST":
@@ -53,3 +56,11 @@ def book(request):
         form = AppointmentForm()
 
     return render(request, "shop/book.html", {"form": form})
+
+
+def delete_appointment(request, pk):
+    if request.method == "POST":
+        get_object_or_404(Appointment, pk=pk).delete()
+        return JsonResponse({"ok": True})
+    return HttpResponseNotAllowed(["POST"])
+    
