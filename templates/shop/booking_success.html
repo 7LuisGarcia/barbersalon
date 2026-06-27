@@ -1,0 +1,36 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+
+<section class="page-header">
+    <h1>Booking Received!</h1>
+    <p>Thank you — we'll confirm your appointment shortly.</p>
+</section>
+
+<div class="container py-5 text-center">
+    <div class="booking-card">
+
+        <div class="mb-4" style="font-size: 4rem;">✅</div>
+
+        <h2 class="mb-3">We got your request!</h2>
+
+        <p class="mb-2">Your appointment is currently <strong>Pending</strong>.</p>
+        <p class="mb-4 text-muted">
+            Our team will verify your Zelle deposit and confirm your booking.
+            You'll be contacted at the email or phone you provided.
+        </p>
+
+        <div class="alert alert-warning text-start mb-4" role="alert">
+            <strong>⏰ Reminder:</strong> If you need to cancel or reschedule,
+            please contact us <strong>at least 24 hours before</strong> your appointment
+            to avoid losing your deposit.
+        </div>
+
+        <a href="{% url 'shop:book' %}" class="btn btn-gold">
+            Book Another Appointment
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}
