@@ -1,7 +1,7 @@
-{% load static %}
+{% load static i18n %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <title>Barber & Salon</title>
@@ -17,14 +17,30 @@
         <a class="navbar-brand fw-bold" href="{% url 'shop:home' %}">
             Barber & Salon
         </a>
-        
-        <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="{% url 'shop:home' %}">Home</a>
-            <a class="nav-link" href="{% url 'shop:services' %}">Services</a>
-            <a class="nav-link" href="{% url 'shop:barbers' %}">Barbers</a>
-            <a class="nav-link" href="{% url 'shop:book' %}">Book</a>
-            <a class="nav-link" href="{% url 'shop:contact' %}">Contact</a>
-            <a class="nav-link" href="{% url 'shop:appointments' %}">Appointments</a>
+
+        <div class="navbar-nav ms-auto align-items-lg-center">
+            <a class="nav-link" href="{% url 'shop:home' %}">{% trans "Home" %}</a>
+            <a class="nav-link" href="{% url 'shop:services' %}">{% trans "Services" %}</a>
+            <a class="nav-link" href="{% url 'shop:barbers' %}">{% trans "Barbers" %}</a>
+            <a class="nav-link" href="{% url 'shop:book' %}">{% trans "Book" %}</a>
+            <a class="nav-link" href="{% url 'shop:contact' %}">{% trans "Contact" %}</a>
+            <a class="nav-link" href="{% url 'shop:appointments' %}">{% trans "Appointments" %}</a>
+
+            <div class="language-switch ms-lg-3 d-flex gap-1">
+                {% get_current_language as CURRENT_LANGUAGE %}
+                <form action="{% url 'set_language' %}" method="post" class="d-flex gap-1">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.path }}">
+                    <button type="submit" name="language" value="en"
+                        class="btn btn-sm lang-btn {% if CURRENT_LANGUAGE == 'en' %}active{% endif %}">
+                        EN
+                    </button>
+                    <button type="submit" name="language" value="es"
+                        class="btn btn-sm lang-btn {% if CURRENT_LANGUAGE == 'es' %}active{% endif %}">
+                        ES
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </nav>
