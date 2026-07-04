@@ -1,6 +1,15 @@
 {% extends 'shop/base.html' %}
 {% load i18n %}
 
+{% load i18n %}
+
+<a href="{% url 'shop:home' %}">{% trans "Home" %}</a>
+<a href="{% url 'shop:services' %}">{% trans "Services" %}</a>
+<a href="{% url 'shop:barbers' %}">{% trans "Barbers" %}</a>
+<a href="{% url 'shop:book' %}">{% trans "Book" %}</a>
+<a href="{% url 'shop:contact' %}">{% trans "Contact" %}</a>
+<a href="{% url 'shop:appointments' %}">{% trans "Appointments" %}</a>
+
 {% block content %}
 
 <div class="container py-4">
