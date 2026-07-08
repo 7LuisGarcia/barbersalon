@@ -3,39 +3,24 @@
 
 {% block content %}
 
-{% get_current_language as CURRENT_LANGUAGE %}
-
-<form action="{% url 'set_language' %}" method="post" class="text-end mb-3">
-    {% csrf_token %}
-    <input type="hidden" name="next" value="{{ request.get_full_path }}">
-
-    {% if CURRENT_LANGUAGE == "es" %}
-        <input type="hidden" name="language" value="en">
-        <button type="submit" class="btn btn-outline-secondary">
-            English
-        </button>
-    {% else %}
-        <input type="hidden" name="language" value="es">
-        <button type="submit" class="btn btn-outline-secondary">
-            Español
-        </button>
-    {% endif %}
-</form>
-
 <section class="page-header">
     <h1>{% trans "Welcome" %}</h1>
     <p>{% trans "Book your appointment today." %}</p>
 </section>
 
 <div class="container py-5 text-center">
-    <a href="{% url 'shop:book' %}" class="btn btn-gold">{% trans "Book Now" %}</a>
+    <a href="{% url 'shop:book' %}" class="btn btn-gold">
+        {% trans "Book Now" %}
+    </a>
 </div>
 
 <section class="hero">
     <div class="container">
         <h1>{% trans "Magic Barber Salon" %}</h1>
         <p>{% trans "Sharp fades, clean cuts, beard trims, and modern style." %}</p>
-        <a href="{% url 'shop:book' %}" class="btn btn-gold">{% trans "Book Appointment" %}</a>
+        <a href="{% url 'shop:book' %}" class="btn btn-gold">
+            {% trans "Book Appointment" %}
+        </a>
     </div>
 </section>
 

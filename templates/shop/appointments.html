@@ -1,101 +1,156 @@
 {% extends 'shop/base.html' %}
 {% load i18n %}
 
-{% load i18n %}
-
-<a href="{% url 'shop:home' %}">{% trans "Home" %}</a>
-<a href="{% url 'shop:services' %}">{% trans "Services" %}</a>
-<a href="{% url 'shop:barbers' %}">{% trans "Barbers" %}</a>
-<a href="{% url 'shop:book' %}">{% trans "Book" %}</a>
-<a href="{% url 'shop:contact' %}">{% trans "Contact" %}</a>
-<a href="{% url 'shop:appointments' %}">{% trans "Appointments" %}</a>
-
 {% block content %}
 
 <div class="container py-4">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Appointments</h1>
-        <a href="{% url 'shop:book' %}" class="btn btn-primary">+ New Booking</a>
+        <h1>{% trans "Appointments" %}</h1>
+        <a href="{% url 'shop:book' %}" class="btn btn-primary">
+            {% trans "+ New Booking" %}
+        </a>
     </div>
 
-    <!-- Stats -->
     <div class="row mb-4">
-        <div class="col"><div class="card text-center p-3"><div class="text-muted small">Total</div><div class="fs-3 fw-bold" id="s-total">{{ appointments|length }}</div></div></div>
-        <div class="col"><div class="card text-center p-3"><div class="text-muted small">Pending</div><div class="fs-3 fw-bold" id="s-pending">0</div></div></div>
-        <div class="col"><div class="card text-center p-3"><div class="text-muted small">Confirmed</div><div class="fs-3 fw-bold" id="s-confirmed">0</div></div></div>
-        <div class="col"><div class="card text-center p-3"><div class="text-muted small">Today</div><div class="fs-3 fw-bold" id="s-today">0</div></div></div>
+        <div class="col">
+            <div class="card text-center p-3">
+                <div class="text-muted small">{% trans "Total" %}</div>
+                <div class="fs-3 fw-bold" id="s-total">{{ appointments|length }}</div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center p-3">
+                <div class="text-muted small">{% trans "Pending" %}</div>
+                <div class="fs-3 fw-bold" id="s-pending">0</div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center p-3">
+                <div class="text-muted small">{% trans "Confirmed" %}</div>
+                <div class="fs-3 fw-bold" id="s-confirmed">0</div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card text-center p-3">
+                <div class="text-muted small">{% trans "Today" %}</div>
+                <div class="fs-3 fw-bold" id="s-today">0</div>
+            </div>
+        </div>
     </div>
 
-    <!-- Filters -->
     <div class="row g-2 mb-3">
-        <div class="col"><input type="text" id="search" class="form-control" placeholder="Search name, barber, service…" /></div>
+        <div class="col">
+            <input type="text"
+                   id="search"
+                   class="form-control"
+                   placeholder="{% trans 'Search name, barber, service…' %}">
+        </div>
+
         <div class="col-auto">
             <select id="f-barber" class="form-select">
-                <option value="">All barbers</option>
+                <option value="">{% trans "All barbers" %}</option>
                 <option>Gina</option>
                 <option>Tere</option>
                 <option>Third</option>
             </select>
         </div>
+
         <div class="col-auto">
             <select id="f-status" class="form-select">
-                <option value="">All statuses</option>
-                <option value="pending">Pending</option>
-                <option value="confirmed">Confirmed</option>
-                <option value="completed">Completed</option>
-                <option value="cancelled">Cancelled</option>
+                <option value="">{% trans "All statuses" %}</option>
+                <option value="pending">{% trans "Pending" %}</option>
+                <option value="confirmed">{% trans "Confirmed" %}</option>
+                <option value="completed">{% trans "Completed" %}</option>
+                <option value="cancelled">{% trans "Cancelled" %}</option>
             </select>
         </div>
+
         <div class="col-auto">
-            <input type="date" id="f-date" class="form-control" />
+            <input type="date" id="f-date" class="form-control">
         </div>
     </div>
 
-    <!-- Table -->
     <div class="table-responsive">
         <table class="table table-bordered table-hover align-middle">
             <thead class="table-dark">
                 <tr>
-                    <th onclick="sortBy('customer_name')" style="cursor:pointer">Customer <span id="sort-customer_name"></span></th>
-                    <th onclick="sortBy('customer_phone')" style="cursor:pointer">Phone <span id="sort-customer_phone"></span></th>
-                    <th onclick="sortBy('barber_name')" style="cursor:pointer">Barber <span id="sort-barber_name"></span></th>
-                    <th onclick="sortBy('service')" style="cursor:pointer">Service <span id="sort-service"></span></th>
-                    <th onclick="sortBy('appointment_date')" style="cursor:pointer">Date <span id="sort-appointment_date">↑</span></th>
-                    <th onclick="sortBy('appointment_time')" style="cursor:pointer">Time <span id="sort-appointment_time"></span></th>
-                    <th onclick="sortBy('payment_method')" style="cursor:pointer">Payment <span id="sort-payment_method"></span></th>
-                    <th onclick="sortBy('status')" style="cursor:pointer">Status <span id="sort-status"></span></th>
-                    <th>Notes</th>
-                    <th>Actions</th>
+                    <th onclick="sortBy('customer_name')" style="cursor:pointer">{% trans "Customer" %} <span id="sort-customer_name"></span></th>
+                    <th onclick="sortBy('customer_phone')" style="cursor:pointer">{% trans "Phone" %} <span id="sort-customer_phone"></span></th>
+                    <th onclick="sortBy('barber_name')" style="cursor:pointer">{% trans "Barber" %} <span id="sort-barber_name"></span></th>
+                    <th onclick="sortBy('service')" style="cursor:pointer">{% trans "Service" %} <span id="sort-service"></span></th>
+                    <th onclick="sortBy('appointment_date')" style="cursor:pointer">{% trans "Date" %} <span id="sort-appointment_date">↑</span></th>
+                    <th onclick="sortBy('appointment_time')" style="cursor:pointer">{% trans "Time" %} <span id="sort-appointment_time"></span></th>
+                    <th onclick="sortBy('payment_method')" style="cursor:pointer">{% trans "Payment" %} <span id="sort-payment_method"></span></th>
+                    <th onclick="sortBy('status')" style="cursor:pointer">{% trans "Status" %} <span id="sort-status"></span></th>
+                    <th>{% trans "Notes" %}</th>
+                    <th>{% trans "Actions" %}</th>
                 </tr>
             </thead>
             <tbody id="tbody"></tbody>
         </table>
     </div>
 
-    <!-- Availability -->
     <div class="card p-3 mt-4">
-        <h5 class="mb-3">Availability Checker</h5>
-        <div id="avail-content"><p class="text-muted">Select a date and barber above to see open slots.</p></div>
+        <h5 class="mb-3">{% trans "Availability Checker" %}</h5>
+        <div id="avail-content">
+            <p class="text-muted">{% trans "Select a date and barber above to see open slots." %}</p>
+        </div>
     </div>
 
 </div>
 
+{% trans "No appointments found." as txt_no_appointments %}
+{% trans "Delete" as txt_delete %}
+{% trans "Delete appointment for" as txt_delete_for %}
+{% trans "This cannot be undone." as txt_cannot_undo %}
+{% trans "Failed to delete appointment. Please try again." as txt_delete_failed %}
+{% trans "Network error. Please try again." as txt_network_error %}
+{% trans "Select a date and barber above to see open slots." as txt_select_date_barber %}
+{% trans "open" as txt_open %}
+{% trans "booked" as txt_booked %}
+{% trans "Pending" as txt_pending %}
+{% trans "Confirmed" as txt_confirmed %}
+{% trans "Completed" as txt_completed %}
+{% trans "Cancelled" as txt_cancelled %}
+
 <script>
 const TODAY = "{{ today|date:'Y-m-d' }}";
+
+const TXT_NO_APPOINTMENTS = "{{ txt_no_appointments|escapejs }}";
+const TXT_DELETE = "{{ txt_delete|escapejs }}";
+const TXT_DELETE_FOR = "{{ txt_delete_for|escapejs }}";
+const TXT_CANNOT_UNDO = "{{ txt_cannot_undo|escapejs }}";
+const TXT_DELETE_FAILED = "{{ txt_delete_failed|escapejs }}";
+const TXT_NETWORK_ERROR = "{{ txt_network_error|escapejs }}";
+const TXT_SELECT_DATE_BARBER = "{{ txt_select_date_barber|escapejs }}";
+const TXT_OPEN = "{{ txt_open|escapejs }}";
+const TXT_BOOKED = "{{ txt_booked|escapejs }}";
+
+const STATUS_LABEL = {
+    pending: "{{ txt_pending|escapejs }}",
+    confirmed: "{{ txt_confirmed|escapejs }}",
+    completed: "{{ txt_completed|escapejs }}",
+    cancelled: "{{ txt_cancelled|escapejs }}",
+};
+
 let DATA = [
 {% for a in appointments %}
 {
-    id:               {{ a.id }},
-    customer_name:    "{{ a.customer_name|escapejs }}",
-    customer_phone:   "{{ a.customer_phone|default_if_none:''|escapejs }}",
-    barber_name:      "{{ a.barber_name|escapejs }}",
-    service:          "{{ a.service|escapejs }}",
+    id: {{ a.id }},
+    delete_url: "{% url 'shop:appointment_delete' a.id %}",
+    customer_name: "{{ a.customer_name|escapejs }}",
+    customer_phone: "{{ a.customer_phone|default_if_none:''|escapejs }}",
+    barber_name: "{{ a.barber_name|escapejs }}",
+    service: "{{ a.service|escapejs }}",
     appointment_date: "{{ a.appointment_date|date:'Y-m-d' }}",
     appointment_time: "{{ a.appointment_time|time:'H:i' }}",
-    payment_method:   "{{ a.payment_method|escapejs }}",
-    status:           "{{ a.status|escapejs }}",
-    notes:            "{{ a.notes|default_if_none:''|escapejs }}"
+    payment_method: "{{ a.payment_method|escapejs }}",
+    status: "{{ a.status|escapejs }}",
+    notes: "{{ a.notes|default_if_none:''|escapejs }}"
 }{% if not forloop.last %},{% endif %}
 {% endfor %}
 ];
@@ -105,13 +160,14 @@ const ALL_SLOTS = ["9:00 AM","9:30 AM","10:00 AM","10:30 AM","11:00 AM","11:30 A
     "3:00 PM","3:30 PM","4:00 PM","4:30 PM","5:00 PM"];
 
 const STATUS_BADGE = {
-    pending:   "warning",
+    pending: "warning",
     confirmed: "primary",
     completed: "success",
     cancelled: "danger",
 };
 
-let sortKey = "appointment_date", sortDir = 1;
+let sortKey = "appointment_date";
+let sortDir = 1;
 
 function fmt12(t) {
     const [h, m] = t.split(":");
@@ -125,27 +181,28 @@ function fmtDate(d) {
 }
 
 function getFiltered() {
-    const q      = document.getElementById("search").value.toLowerCase();
+    const q = document.getElementById("search").value.toLowerCase();
     const barber = document.getElementById("f-barber").value;
     const status = document.getElementById("f-status").value;
-    const date   = document.getElementById("f-date").value;
+    const date = document.getElementById("f-date").value;
 
     return DATA.filter(r => {
         if (q && ![r.customer_name, r.barber_name, r.service].some(v => v.toLowerCase().includes(q))) return false;
         if (barber && r.barber_name !== barber) return false;
         if (status && r.status !== status) return false;
-        if (date   && r.appointment_date !== date) return false;
+        if (date && r.appointment_date !== date) return false;
         return true;
     }).sort((a, b) => {
-        const av = a[sortKey] || "", bv = b[sortKey] || "";
+        const av = a[sortKey] || "";
+        const bv = b[sortKey] || "";
         return av < bv ? -sortDir : av > bv ? sortDir : 0;
     });
 }
 
-function deleteAppointment(id, name) {
-    if (!confirm(`Delete appointment for "${name}"? This cannot be undone.`)) return;
+function deleteAppointment(id, name, deleteUrl) {
+    if (!confirm(`${TXT_DELETE_FOR} "${name}"? ${TXT_CANNOT_UNDO}`)) return;
 
-    fetch(`/appointments/${id}/delete/`, {
+    fetch(deleteUrl, {
         method: "POST",
         headers: {
             "X-CSRFToken": getCookie("csrftoken"),
@@ -157,10 +214,10 @@ function deleteAppointment(id, name) {
             DATA = DATA.filter(r => r.id !== id);
             render();
         } else {
-            alert("Failed to delete appointment. Please try again.");
+            alert(TXT_DELETE_FAILED);
         }
     })
-    .catch(() => alert("Network error. Please try again."));
+    .catch(() => alert(TXT_NETWORK_ERROR));
 }
 
 function getCookie(name) {
@@ -171,14 +228,15 @@ function getCookie(name) {
 function render() {
     const rows = getFiltered();
 
-    document.getElementById("s-total").textContent     = rows.length;
-    document.getElementById("s-pending").textContent   = rows.filter(r => r.status === "pending").length;
+    document.getElementById("s-total").textContent = rows.length;
+    document.getElementById("s-pending").textContent = rows.filter(r => r.status === "pending").length;
     document.getElementById("s-confirmed").textContent = rows.filter(r => r.status === "confirmed").length;
-    document.getElementById("s-today").textContent     = rows.filter(r => r.appointment_date === TODAY).length;
+    document.getElementById("s-today").textContent = rows.filter(r => r.appointment_date === TODAY).length;
 
     const tb = document.getElementById("tbody");
+
     if (!rows.length) {
-        tb.innerHTML = `<tr><td colspan="10" class="text-center text-muted py-4">No appointments found.</td></tr>`;
+        tb.innerHTML = `<tr><td colspan="10" class="text-center text-muted py-4">${TXT_NO_APPOINTMENTS}</td></tr>`;
     } else {
         tb.innerHTML = rows.map(r => `
         <tr>
@@ -189,23 +247,23 @@ function render() {
             <td>${fmtDate(r.appointment_date)}</td>
             <td>${fmt12(r.appointment_time)}</td>
             <td style="text-transform:capitalize">${r.payment_method}</td>
-            <td><span class="badge bg-${STATUS_BADGE[r.status] || 'secondary'}">${r.status}</span></td>
+            <td><span class="badge bg-${STATUS_BADGE[r.status] || 'secondary'}">${STATUS_LABEL[r.status] || r.status}</span></td>
             <td>${r.notes || "—"}</td>
             <td>
                 <button class="btn btn-danger btn-sm"
-                    onclick="deleteAppointment(${r.id}, '${r.customer_name.replace(/'/g, "\\'")}')">
-                    🗑 Delete
+                    onclick="deleteAppointment(${r.id}, '${r.customer_name.replace(/'/g, "\\'")}', '${r.delete_url}')">
+                    🗑 ${TXT_DELETE}
                 </button>
             </td>
         </tr>`).join("");
     }
 
-    const date   = document.getElementById("f-date").value;
+    const date = document.getElementById("f-date").value;
     const barber = document.getElementById("f-barber").value;
-    const avail  = document.getElementById("avail-content");
+    const avail = document.getElementById("avail-content");
 
     if (!date || !barber) {
-        avail.innerHTML = `<p class="text-muted">Select a date and barber above to see open slots.</p>`;
+        avail.innerHTML = `<p class="text-muted">${TXT_SELECT_DATE_BARBER}</p>`;
         return;
     }
 
@@ -215,10 +273,11 @@ function render() {
     );
 
     const free = ALL_SLOTS.filter(s => !taken.has(s)).length;
+
     avail.innerHTML = `
-        <p class="mb-2">${barber} · ${fmtDate(date)} · 
-        <span class="text-success fw-bold">${free} open</span> / 
-        <span class="text-danger fw-bold">${taken.size} booked</span>
+        <p class="mb-2">${barber} · ${fmtDate(date)} ·
+        <span class="text-success fw-bold">${free} ${TXT_OPEN}</span> /
+        <span class="text-danger fw-bold">${taken.size} ${TXT_BOOKED}</span>
         </p>
         <div class="d-flex flex-wrap gap-2">
         ${ALL_SLOTS.map(s => `
@@ -228,7 +287,13 @@ function render() {
 }
 
 function sortBy(key) {
-    if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
+    if (sortKey === key) {
+        sortDir *= -1;
+    } else {
+        sortKey = key;
+        sortDir = 1;
+    }
+
     document.querySelectorAll("[id^='sort-']").forEach(el => el.textContent = "");
     document.getElementById("sort-" + key).textContent = sortDir === 1 ? " ↑" : " ↓";
     render();

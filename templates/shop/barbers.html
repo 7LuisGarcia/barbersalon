@@ -29,6 +29,7 @@
 {% endblock %}
 
 {% block content %}
+
 <section class="page-header">
     <h1>{% trans "Meet Our Barbers" %}</h1>
     <p>{% trans "Professional cuts from experienced barbers." %}</p>
@@ -49,12 +50,7 @@
 
                 <h4>Gina</h4>
 
-                <p>
-                    {% blocktrans trimmed %}
-                        Professional barber and stylist specializing in modern men's cuts,
-                        women's styles, fades, color, and beard detailing.
-                    {% endblocktrans %}
-                </p>
+                <p>{% blocktrans trimmed %}Professional barber and stylist specializing in modern men's cuts, women's styles, fades, color, and beard detailing.{% endblocktrans %}</p>
             </div>
         </div>
 
@@ -90,4 +86,5 @@
 
     </div>
 </div>
+
 {% endblock %}

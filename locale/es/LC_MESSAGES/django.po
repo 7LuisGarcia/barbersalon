@@ -1,30 +1,170 @@
-msgid "Home"
-msgstr "Inicio"
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Spanish translations for Barber Salon.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-08 13:19-0700\n"
+"PO-Revision-Date: 2026-07-08 12:56-0700\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Services"
-msgstr "Servicios"
-
-msgid "Barbers"
-msgstr "Barberos"
-
-msgid "Book"
-msgstr "Reservar"
-
-msgid "Contact"
-msgstr "Contacto"
-
+#: .\templates\shop\appointments.html:9 .\templates\shop\base.html:28
 msgid "Appointments"
 msgstr "Citas"
 
+#: .\templates\shop\appointments.html:11
+msgid "+ New Booking"
+msgstr "+ Nueva cita"
+
+#: .\templates\shop\appointments.html:18
+msgid "Total"
+msgstr "Total"
+
+#: .\templates\shop\appointments.html:25 .\templates\shop\appointments.html:65
+#: .\templates\shop\appointments.html:115
+msgid "Pending"
+msgstr "Pendiente"
+
+#: .\templates\shop\appointments.html:32 .\templates\shop\appointments.html:66
+#: .\templates\shop\appointments.html:116
+msgid "Confirmed"
+msgstr "Confirmada"
+
+#: .\templates\shop\appointments.html:39
+msgid "Today"
+msgstr "Hoy"
+
+#: .\templates\shop\appointments.html:50
+#, fuzzy
+#| msgid "Search name, barber, serviceâ€¦"
+msgid "Search name, barber, service…"
+msgstr "Buscar nombre, barbero, servicio…"
+
+#: .\templates\shop\appointments.html:55
+msgid "All barbers"
+msgstr "Todos los barberos"
+
+#: .\templates\shop\appointments.html:64
+msgid "All statuses"
+msgstr "Todos los estados"
+
+#: .\templates\shop\appointments.html:67 .\templates\shop\appointments.html:117
+msgid "Completed"
+msgstr "Completada"
+
+#: .\templates\shop\appointments.html:68 .\templates\shop\appointments.html:118
+msgid "Cancelled"
+msgstr "Cancelada"
+
+#: .\templates\shop\appointments.html:81
+msgid "Customer"
+msgstr "Cliente"
+
+#: .\templates\shop\appointments.html:82
+#: .\templates\shop\book_appointment.html:45
+msgid "Phone"
+msgstr "Teléfono"
+
+#: .\templates\shop\appointments.html:83
+#: .\templates\shop\book_appointment.html:55
+msgid "Barber"
+msgstr "Barbero"
+
+#: .\templates\shop\appointments.html:84
+#: .\templates\shop\book_appointment.html:50
+msgid "Service"
+msgstr "Servicio"
+
+#: .\templates\shop\appointments.html:85
+#: .\templates\shop\book_appointment.html:60
+msgid "Date"
+msgstr "Fecha"
+
+#: .\templates\shop\appointments.html:86
+#: .\templates\shop\book_appointment.html:69
+msgid "Time"
+msgstr "Hora"
+
+#: .\templates\shop\appointments.html:87
+msgid "Payment"
+msgstr "Pago"
+
+#: .\templates\shop\appointments.html:88
+msgid "Status"
+msgstr "Estado"
+
+#: .\templates\shop\appointments.html:89
+#: .\templates\shop\book_appointment.html:77
+msgid "Notes"
+msgstr "Notas"
+
+#: .\templates\shop\appointments.html:90
+msgid "Actions"
+msgstr "Acciones"
+
+#: .\templates\shop\appointments.html:98
+msgid "Availability Checker"
+msgstr "Verificador de disponibilidad"
+
+#: .\templates\shop\appointments.html:100
+#: .\templates\shop\appointments.html:112
+msgid "Select a date and barber above to see open slots."
+msgstr "Selecciona una fecha y un barbero para ver horarios disponibles."
+
+#: .\templates\shop\appointments.html:106
+msgid "No appointments found."
+msgstr "No se encontraron citas."
+
+#: .\templates\shop\appointments.html:107
+msgid "Delete"
+msgstr "Eliminar"
+
+#: .\templates\shop\appointments.html:108
+msgid "Delete appointment for"
+msgstr "Eliminar cita para"
+
+#: .\templates\shop\appointments.html:109
+msgid "This cannot be undone."
+msgstr "Esto no se puede deshacer."
+
+#: .\templates\shop\appointments.html:110
+msgid "Failed to delete appointment. Please try again."
+msgstr "No se pudo eliminar la cita. Inténtalo de nuevo."
+
+#: .\templates\shop\appointments.html:111
+msgid "Network error. Please try again."
+msgstr "Error de red. Inténtalo de nuevo."
+
+#: .\templates\shop\appointments.html:113
+msgid "open"
+msgstr "disponibles"
+
+#: .\templates\shop\appointments.html:114
+msgid "booked"
+msgstr "reservados"
+
+#: .\templates\shop\barbers.html:34
 msgid "Meet Our Barbers"
 msgstr "Conoce a nuestros barberos"
 
+#: .\templates\shop\barbers.html:35
 msgid "Professional cuts from experienced barbers."
 msgstr "Cortes profesionales realizados por barberos con experiencia."
 
+#: .\templates\shop\barbers.html:46
 msgid "Gina, professional barber"
 msgstr "Gina, barbera profesional"
 
+#: .\templates\shop\barbers.html:53
 msgid ""
 "Professional barber and stylist specializing in modern men's cuts, women's "
 "styles, fades, color, and beard detailing."
@@ -32,14 +172,359 @@ msgstr ""
 "Barbera y estilista profesional especializada en cortes modernos para "
 "hombres, estilos para mujeres, desvanecidos, color y diseño de barba."
 
+#: .\templates\shop\barbers.html:62
 msgid "Tere, professional barber"
 msgstr "Tere, barbera profesional"
 
+#: .\templates\shop\barbers.html:68
 msgid "Classic cuts and modern styles."
 msgstr "Cortes clásicos y estilos modernos."
 
+#: .\templates\shop\barbers.html:77
 msgid "Professional barber"
 msgstr "Barbero profesional"
 
+#: .\templates\shop\barbers.html:83
 msgid "Tapers, line-ups, and kids cuts."
+msgstr "Desvanecidos, delineados y cortes para niños."
+
+#: .\templates\shop\base.html:7 .\templates\shop\base.html:19
+msgid "Barber & Salon"
+msgstr "Barbería y Salón"
+
+#: .\templates\shop\base.html:23
+msgid "Home"
+msgstr "Inicio"
+
+#: .\templates\shop\base.html:24
+msgid "Services"
+msgstr "Servicios"
+
+#: .\templates\shop\base.html:25
+msgid "Barbers"
+msgstr "Barberos"
+
+#: .\templates\shop\base.html:26
+msgid "Book"
+msgstr "Reservar"
+
+#: .\templates\shop\base.html:27
+msgid "Contact"
+msgstr "Contacto"
+
+#: .\templates\shop\base.html:60
+#, fuzzy
+#| msgid "Â© 2026 FreshCut Barber Shop. All rights reserved."
+msgid "© 2026 FreshCut Barber Shop. All rights reserved."
+msgstr "© 2026 FreshCut Barber Shop. Todos los derechos reservados."
+
+#: .\templates\shop\book_appointment.html:7 .\templates\shop\home.html:22
+msgid "Book Appointment"
+msgstr "Reservar cita"
+
+#: .\templates\shop\book_appointment.html:8
+#, python-format
+msgid ""
+"Reserve your spot today — a 50%% deposit via Zelle is required to confirm."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:15
+msgid "Booking Policies"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:17
+#, python-format
+msgid ""
+"<strong>50%% deposit via Zelle is required</strong> to confirm your "
+"appointment."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:18
+msgid ""
+"Cancellations or reschedules must be made <strong>at least 24 hours in "
+"advance</strong>."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:19
+msgid "No-shows or late cancellations <strong>forfeit the deposit</strong>."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:35
+msgid "Name"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:40
+msgid "Email"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:63
+msgid "Open Tues–Fri (10 AM–7 PM) and Saturday (9 AM–5 PM). Closed Sun & Mon."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:71
+#: .\templates\shop\book_appointment.html:128
+msgid "— pick a date first —"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:82
+#, fuzzy
+#| msgid "Payment"
+msgid "Payment Method"
+msgstr "Pago"
+
+#: .\templates\shop\book_appointment.html:87
+msgid "Zelle Deposit Required"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:90
+#, python-format
+msgid ""
+"Please send <strong>50%% of your service cost</strong> via Zelle to confirm "
+"your booking:"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:94
+msgid "Zelle Email:"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:95
+msgid "Zelle Phone:"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:96
+msgid "Memo:"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:96
+#, fuzzy
+#| msgid "Book your appointment today."
+msgid "Your name + appointment date"
+msgstr "Reserva tu cita hoy."
+
+#: .\templates\shop\book_appointment.html:100
+msgid ""
+"Your appointment will be marked <em>Pending</em> until payment is verified "
+"by our team."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:105
+msgid "Upload Zelle Payment Screenshot"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:109
+msgid "Screenshot of your Zelle confirmation is required to submit."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:116
+#, python-format
+msgid ""
+"I confirm I have sent the 50%% Zelle deposit and agree to the cancellation/"
+"reschedule policy (24 hours notice required)."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:122
+msgid "Submit Booking Request"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:129
+msgid "Select a time"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:130
+msgid "We're closed on"
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:131
+msgid "Please pick a Tue–Fri or Saturday."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:132
+msgid "Please select a valid business day (Tue–Sat)."
+msgstr ""
+
+#: .\templates\shop\book_appointment.html:133
+#, fuzzy
+#| msgid "Delete appointment for"
+msgid "Please select an appointment time."
+msgstr "Eliminar cita para"
+
+#: .\templates\shop\booking_success.html:7
+msgid "Booking Received!"
+msgstr ""
+
+#: .\templates\shop\booking_success.html:8
+msgid "Thank you — we'll confirm your appointment shortly."
+msgstr ""
+
+#: .\templates\shop\booking_success.html:16
+msgid "We got your request!"
+msgstr ""
+
+#: .\templates\shop\booking_success.html:19
+msgid "Your appointment is currently <strong>Pending</strong>."
+msgstr ""
+
+#: .\templates\shop\booking_success.html:25
+msgid ""
+"Our team will verify your Zelle deposit and confirm your booking. You'll be "
+"contacted at the email or phone you provided."
+msgstr ""
+
+#: .\templates\shop\booking_success.html:32
+msgid ""
+"<strong>⏰ Reminder:</strong> If you need to cancel or reschedule, please "
+"contact us <strong>at least 24 hours before</strong> your appointment to "
+"avoid losing your deposit."
+msgstr ""
+
+#: .\templates\shop\booking_success.html:40
+#, fuzzy
+#| msgid "Book Appointment"
+msgid "Book Another Appointment"
+msgstr "Reservar cita"
+
+#: .\templates\shop\contact.html:8
+#, fuzzy
+#| msgid "Contact"
+msgid "Contact Us"
+msgstr "Contacto"
+
+#: .\templates\shop\contact.html:9
+msgid "Visit us or send us a message."
+msgstr ""
+
+#: .\templates\shop\contact.html:14
+msgid "FreshCut Barber Shop"
+msgstr ""
+
+#: .\templates\shop\contact.html:17
+msgid "Address:"
+msgstr ""
+
+#: .\templates\shop\contact.html:22
+#, fuzzy
+#| msgid "Phone"
+msgid "Phone:"
+msgstr "Teléfono"
+
+#: .\templates\shop\contact.html:27
+msgid "Email:"
+msgstr ""
+
+#: .\templates\shop\contact.html:32
+msgid "Hours:"
+msgstr ""
+
+#: .\templates\shop\contact.html:33
+msgid "Tue - Fri: 9:00 AM - 7:00 PM"
+msgstr ""
+
+#: .\templates\shop\contact.html:34
+msgid "Sat: 9:00 AM - 5:00 PM"
+msgstr ""
+
+#: .\templates\shop\create_appointment.html:9
+#, fuzzy
+#| msgid "Appointments"
+msgid "New Appointment"
+msgstr "Citas"
+
+#: .\templates\shop\create_appointment.html:17
+#, fuzzy
+#| msgid "Appointments"
+msgid "Save Appointment"
+msgstr "Citas"
+
+#: .\templates\shop\create_appointment.html:21
+msgid "Back"
+msgstr ""
+
+#: .\templates\shop\home.html:7
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#: .\templates\shop\home.html:8
+msgid "Book your appointment today."
+msgstr "Reserva tu cita hoy."
+
+#: .\templates\shop\home.html:13
+msgid "Book Now"
+msgstr "Reservar ahora"
+
+#: .\templates\shop\home.html:19
+msgid "Magic Barber Salon"
+msgstr "Magic Barber Salon"
+
+#: .\templates\shop\home.html:20
+msgid "Sharp fades, clean cuts, beard trims, and modern style."
+msgstr ""
+"Desvanecidos definidos, cortes limpios, arreglo de barba y estilo moderno."
+
+#: .\templates\shop\home.html:28
+msgid "Why Choose Us?"
+msgstr "¿Por qué elegirnos?"
+
+#: .\templates\shop\home.html:33
+msgid "Expert Barbers"
+msgstr "Barberos expertos"
+
+#: .\templates\shop\home.html:34
+msgid "Professional barbers with experience in fades, tapers, and modern cuts."
+msgstr ""
+"Barberos profesionales con experiencia en desvanecidos, tapers y cortes "
+"modernos."
+
+#: .\templates\shop\home.html:40
+msgid "Easy Booking"
+msgstr "Reservas fáciles"
+
+#: .\templates\shop\home.html:41
+msgid "Schedule your appointment online in just a few clicks."
+msgstr "Agenda tu cita en línea con solo unos clics."
+
+#: .\templates\shop\home.html:47
+msgid "Premium Style"
+msgstr "Estilo premium"
+
+#: .\templates\shop\home.html:48
+msgid "A clean, modern barber shop experience built around confidence."
+msgstr ""
+"Una experiencia de barbería limpia y moderna diseñada para darte confianza."
+
+#: .\templates\shop\services.html:7
+#, fuzzy
+#| msgid "Services"
+msgid "Our Services"
+msgstr "Servicios"
+
+#: .\templates\shop\services.html:8
+msgid "Choose the cut that fits your style."
+msgstr ""
+
+#: .\templates\shop\services.html:16
+msgid "Haircut"
+msgstr ""
+
+#: .\templates\shop\services.html:17
+#, fuzzy
+#| msgid "Gina, professional barber"
+msgid "Clean and professional haircut."
+msgstr "Gina, barbera profesional"
+
+#: .\templates\shop\services.html:24
+msgid "Fade"
+msgstr ""
+
+#: .\templates\shop\services.html:25
+msgid "Sharp skin fade, low fade, mid fade, or high fade."
+msgstr ""
+
+#: .\templates\shop\services.html:32
+msgid "Beard Trim"
+msgstr ""
+
+#: .\templates\shop\services.html:33
+#, fuzzy
+#| msgid "Tapers, line-ups, and kids cuts."
+msgid "Shape, line-up, and clean beard finish."
 msgstr "Desvanecidos, delineados y cortes para niños."
