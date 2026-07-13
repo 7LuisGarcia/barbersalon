@@ -32,7 +32,6 @@
             <div class="language-switch ms-lg-3 d-flex gap-1">
                 <form action="{% url 'set_language' %}" method="post">
                     {% csrf_token %}
-                    <input name="next" type="hidden" value="{% translate_url 'en' %}">
                     <button type="submit"
                             name="language"
                             value="en"
@@ -43,7 +42,6 @@
 
                 <form action="{% url 'set_language' %}" method="post">
                     {% csrf_token %}
-                    <input name="next" type="hidden" value="{% translate_url 'es' %}">
                     <button type="submit"
                             name="language"
                             value="es"
