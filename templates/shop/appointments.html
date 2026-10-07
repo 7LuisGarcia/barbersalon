@@ -6,37 +6,37 @@
 <div class="container py-4">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>{% trans "Appointments" %}</h1>
+        <h1>Citas</h1>
         <a href="{% url 'shop:book' %}" class="btn btn-primary">
-            {% trans "+ New Booking" %}
+            + Nueva reserva
         </a>
     </div>
 
     <div class="row mb-4">
         <div class="col">
             <div class="card text-center p-3">
-                <div class="text-muted small">{% trans "Total" %}</div>
+                <div class="text-muted small">Total</div>
                 <div class="fs-3 fw-bold" id="s-total">{{ appointments|length }}</div>
             </div>
         </div>
 
         <div class="col">
             <div class="card text-center p-3">
-                <div class="text-muted small">{% trans "Pending" %}</div>
+                <div class="text-muted small">Pendiente</div>
                 <div class="fs-3 fw-bold" id="s-pending">0</div>
             </div>
         </div>
 
         <div class="col">
             <div class="card text-center p-3">
-                <div class="text-muted small">{% trans "Confirmed" %}</div>
+                <div class="text-muted small">Confirmada</div>
                 <div class="fs-3 fw-bold" id="s-confirmed">0</div>
             </div>
         </div>
 
         <div class="col">
             <div class="card text-center p-3">
-                <div class="text-muted small">{% trans "Today" %}</div>
+                <div class="text-muted small">Hoy</div>
                 <div class="fs-3 fw-bold" id="s-today">0</div>
             </div>
         </div>
@@ -47,25 +47,25 @@
             <input type="text"
                    id="search"
                    class="form-control"
-                   placeholder="{% trans 'Search name, barber, service…' %}">
+                   placeholder="Buscar nombre, barbero, servicio…">
         </div>
 
         <div class="col-auto">
             <select id="f-barber" class="form-select">
-                <option value="">{% trans "All barbers" %}</option>
+                <option value="">Todos los barberos</option>
                 <option>Gina</option>
                 <option>Tere</option>
-                <option>Third</option>
+                <option value="Third">Tercer barbero</option>
             </select>
         </div>
 
         <div class="col-auto">
             <select id="f-status" class="form-select">
-                <option value="">{% trans "All statuses" %}</option>
-                <option value="pending">{% trans "Pending" %}</option>
-                <option value="confirmed">{% trans "Confirmed" %}</option>
-                <option value="completed">{% trans "Completed" %}</option>
-                <option value="cancelled">{% trans "Cancelled" %}</option>
+                <option value="">Todos los estados</option>
+                <option value="pending">Pendiente</option>
+                <option value="confirmed">Confirmada</option>
+                <option value="completed">Completada</option>
+                <option value="cancelled">Cancelada</option>
             </select>
         </div>
 
@@ -78,16 +78,16 @@
         <table class="table table-bordered table-hover align-middle">
             <thead class="table-dark">
                 <tr>
-                    <th onclick="sortBy('customer_name')" style="cursor:pointer">{% trans "Customer" %} <span id="sort-customer_name"></span></th>
-                    <th onclick="sortBy('customer_phone')" style="cursor:pointer">{% trans "Phone" %} <span id="sort-customer_phone"></span></th>
-                    <th onclick="sortBy('barber_name')" style="cursor:pointer">{% trans "Barber" %} <span id="sort-barber_name"></span></th>
-                    <th onclick="sortBy('service')" style="cursor:pointer">{% trans "Service" %} <span id="sort-service"></span></th>
-                    <th onclick="sortBy('appointment_date')" style="cursor:pointer">{% trans "Date" %} <span id="sort-appointment_date">↑</span></th>
-                    <th onclick="sortBy('appointment_time')" style="cursor:pointer">{% trans "Time" %} <span id="sort-appointment_time"></span></th>
-                    <th onclick="sortBy('payment_method')" style="cursor:pointer">{% trans "Payment" %} <span id="sort-payment_method"></span></th>
-                    <th onclick="sortBy('status')" style="cursor:pointer">{% trans "Status" %} <span id="sort-status"></span></th>
-                    <th>{% trans "Notes" %}</th>
-                    <th>{% trans "Actions" %}</th>
+                    <th onclick="sortBy('customer_name')" style="cursor:pointer">Cliente <span id="sort-customer_name"></span></th>
+                    <th onclick="sortBy('customer_phone')" style="cursor:pointer">Teléfono <span id="sort-customer_phone"></span></th>
+                    <th onclick="sortBy('barber_name')" style="cursor:pointer">Barbero <span id="sort-barber_name"></span></th>
+                    <th onclick="sortBy('service')" style="cursor:pointer">Servicio <span id="sort-service"></span></th>
+                    <th onclick="sortBy('appointment_date')" style="cursor:pointer">Fecha <span id="sort-appointment_date">↑</span></th>
+                    <th onclick="sortBy('appointment_time')" style="cursor:pointer">Hora <span id="sort-appointment_time"></span></th>
+                    <th onclick="sortBy('payment_method')" style="cursor:pointer">Pago <span id="sort-payment_method"></span></th>
+                    <th onclick="sortBy('status')" style="cursor:pointer">Estado <span id="sort-status"></span></th>
+                    <th>Notas</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody id="tbody"></tbody>
@@ -95,27 +95,27 @@
     </div>
 
     <div class="card p-3 mt-4">
-        <h5 class="mb-3">{% trans "Availability Checker" %}</h5>
+        <h5 class="mb-3">Consultar disponibilidad</h5>
         <div id="avail-content">
-            <p class="text-muted">{% trans "Select a date and barber above to see open slots." %}</p>
+            <p class="text-muted">Selecciona una fecha y un barbero arriba para ver los horarios disponibles.</p>
         </div>
     </div>
 
 </div>
 
-{% trans "No appointments found." as txt_no_appointments %}
-{% trans "Delete" as txt_delete %}
-{% trans "Delete appointment for" as txt_delete_for %}
-{% trans "This cannot be undone." as txt_cannot_undo %}
-{% trans "Failed to delete appointment. Please try again." as txt_delete_failed %}
-{% trans "Network error. Please try again." as txt_network_error %}
-{% trans "Select a date and barber above to see open slots." as txt_select_date_barber %}
-{% trans "open" as txt_open %}
-{% trans "booked" as txt_booked %}
-{% trans "Pending" as txt_pending %}
-{% trans "Confirmed" as txt_confirmed %}
-{% trans "Completed" as txt_completed %}
-{% trans "Cancelled" as txt_cancelled %}
+{% trans "No se encontraron citas." as txt_no_appointments %}
+{% trans "Eliminar" as txt_delete %}
+{% trans "¿Eliminar la cita de" as txt_delete_for %}
+{% trans "Esta acción no se puede deshacer." as txt_cannot_undo %}
+{% trans "No se pudo eliminar la cita. Inténtalo de nuevo." as txt_delete_failed %}
+{% trans "Error de conexión. Inténtalo de nuevo." as txt_network_error %}
+{% trans "Selecciona una fecha y un barbero arriba para ver los horarios disponibles." as txt_select_date_barber %}
+{% trans "disponibles" as txt_open %}
+{% trans "reservados" as txt_booked %}
+{% trans "Pendiente" as txt_pending %}
+{% trans "Confirmada" as txt_confirmed %}
+{% trans "Completada" as txt_completed %}
+{% trans "Cancelada" as txt_cancelled %}
 
 <script>
 const TODAY = "{{ today|date:'Y-m-d' }}";
@@ -159,6 +159,16 @@ const ALL_SLOTS = ["9:00 AM","9:30 AM","10:00 AM","10:30 AM","11:00 AM","11:30 A
     "12:00 PM","12:30 PM","1:00 PM","1:30 PM","2:00 PM","2:30 PM",
     "3:00 PM","3:30 PM","4:00 PM","4:30 PM","5:00 PM"];
 
+const SERVICE_LABEL = {
+    "Haircut": "Corte de cabello",
+    "Beard Trim": "Arreglo de barba",
+    "Haircut + Beard": "Corte y barba",
+    "Kids Cut": "Corte infantil",
+    "Fade": "Degradado",
+};
+const PAYMENT_LABEL = { cash: "Efectivo", zelle: "Zelle" };
+const BARBER_LABEL = { Third: "Tercer barbero" };
+
 const STATUS_BADGE = {
     pending: "warning",
     confirmed: "primary",
@@ -187,7 +197,7 @@ function getFiltered() {
     const date = document.getElementById("f-date").value;
 
     return DATA.filter(r => {
-        if (q && ![r.customer_name, r.barber_name, r.service].some(v => v.toLowerCase().includes(q))) return false;
+        if (q && ![r.customer_name, BARBER_LABEL[r.barber_name] || r.barber_name, SERVICE_LABEL[r.service] || r.service].some(v => v.toLowerCase().includes(q))) return false;
         if (barber && r.barber_name !== barber) return false;
         if (status && r.status !== status) return false;
         if (date && r.appointment_date !== date) return false;
@@ -242,11 +252,11 @@ function render() {
         <tr>
             <td>${r.customer_name}</td>
             <td>${r.customer_phone || "—"}</td>
-            <td>${r.barber_name}</td>
-            <td>${r.service}</td>
+            <td>${BARBER_LABEL[r.barber_name] || r.barber_name}</td>
+            <td>${SERVICE_LABEL[r.service] || r.service}</td>
             <td>${fmtDate(r.appointment_date)}</td>
             <td>${fmt12(r.appointment_time)}</td>
-            <td style="text-transform:capitalize">${r.payment_method}</td>
+            <td style="text-transform:capitalize">${PAYMENT_LABEL[r.payment_method] || r.payment_method}</td>
             <td><span class="badge bg-${STATUS_BADGE[r.status] || 'secondary'}">${STATUS_LABEL[r.status] || r.status}</span></td>
             <td>${r.notes || "—"}</td>
             <td>
@@ -275,7 +285,7 @@ function render() {
     const free = ALL_SLOTS.filter(s => !taken.has(s)).length;
 
     avail.innerHTML = `
-        <p class="mb-2">${barber} · ${fmtDate(date)} ·
+        <p class="mb-2">${BARBER_LABEL[barber] || barber} · ${fmtDate(date)} ·
         <span class="text-success fw-bold">${free} ${TXT_OPEN}</span> /
         <span class="text-danger fw-bold">${taken.size} ${TXT_BOOKED}</span>
         </p>

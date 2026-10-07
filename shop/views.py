@@ -47,14 +47,14 @@ def book(request):
             ).exclude(status="cancelled").exists()
 
             if already_taken:
-                form.add_error(None, "That time slot is already booked. Please choose a different time.")
+                form.add_error(None, "Ese horario ya está reservado. Selecciona otra hora.")
                 return render(request, "shop/book_appointment.html", {"form": form})
 
             try:
                 appt.save()
                 return redirect("shop:booking_success")
             except IntegrityError:
-                form.add_error(None, "That time slot was just taken. Please choose a different time.")
+                form.add_error(None, "Ese horario acaba de reservarse. Selecciona otra hora.")
                 return render(request, "shop/book_appointment.html", {"form": form})
     else:
         form = AppointmentForm()
@@ -85,9 +85,9 @@ def delete_appointment(request, pk):
 def cancel_appointment(request, pk):
     appointment = get_object_or_404(Appointment, pk=pk)
     if not appointment.can_cancel_or_reschedule():
-        messages.error(request, "Cancellations must be made at least 24 hours before your appointment.")
+        messages.error(request, "Las cancelaciones deben hacerse al menos 24 horas antes de tu cita.")
         return redirect("shop:appointments")
     appointment.status = "cancelled"
     appointment.save()
-    messages.success(request, "Your appointment has been cancelled.")
+    messages.success(request, "Tu cita ha sido cancelada.")
     return redirect("shop:appointments")

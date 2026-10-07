@@ -6,7 +6,7 @@
 <div class="container py-5">
     <div class="card shadow border-0 rounded-4 p-4">
 
-        <h1 class="fw-bold mb-4">{% trans "New Appointment" %}</h1>
+        <h1 class="fw-bold mb-4">Nueva cita</h1>
 
         <form method="POST">
             {% csrf_token %}
@@ -14,11 +14,11 @@
             {{ form.as_p }}
 
             <button type="submit" class="btn btn-dark">
-                {% trans "Save Appointment" %}
+                Guardar cita
             </button>
 
             <a href="{% url 'shop:appointments' %}" class="btn btn-secondary">
-                {% trans "Back" %}
+                Volver
             </a>
         </form>
 

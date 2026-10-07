@@ -43,10 +43,9 @@ INSTALLED_APPS = [
 
 USE_I18N = True
 
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "es"
 
 LANGUAGES = [
-    ("en", "English"),
     ("es", "Español"),
 ]
 
@@ -119,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 

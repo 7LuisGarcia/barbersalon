@@ -1,5 +1,5 @@
-{% extends "shop/base.html" %}
-{% load static i18n %}
+{% extends 'shop/base.html' %}
+{% load static %}
 
 {% block extra_css %}
 <style>
@@ -8,7 +8,7 @@
         height: 120px;
         border-radius: 50%;
         overflow: hidden;
-        margin: 0 auto 1rem;
+        margin: 0 auto 1rem auto;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -31,8 +31,8 @@
 {% block content %}
 
 <section class="page-header">
-    <h1>{% trans "Meet Our Barbers" %}</h1>
-    <p>{% trans "Professional cuts from experienced barbers." %}</p>
+    <h1>Conoce a nuestros barberos</h1>
+    <p>Cortes profesionales de manos de barberos con experiencia.</p>
 </section>
 
 <div class="container py-5">
@@ -41,46 +41,35 @@
         <div class="col-md-4">
             <div class="premium-card text-center">
                 <div class="barber-circle">
-                    <img
-                        src="{% static 'images/gina.jpg' %}"
-                        alt="{% trans 'Gina, professional barber' %}"
-                        class="barber-img"
-                    >
+                    <img src="{% static 'images/gina.jpg' %}"
+                            alt="Gina" class="barber-img">
                 </div>
-
                 <h4>Gina</h4>
-
-                <p>{% blocktrans trimmed %}Professional barber and stylist specializing in modern men's cuts, women's styles, fades, color, and beard detailing.{% endblocktrans %}</p>
+                <p>Barbera y estilista profesional especializada en
+                    cortes modernos para hombres, estilos para mujeres,
+                    degradados, coloración y arreglo de barba.</p>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="premium-card text-center">
                 <div class="barber-circle">
-                    <img
-                        src="{% static 'images/tere.jpg' %}"
-                        alt="{% trans 'Gina, professional barber' %}"
-                        class="barber-img"
-                    >
+                    <img src="{% static 'images/tere.jpg' %}"
+                            alt="Tere" class="barber-img">
                 </div>
-
                 <h4>Tere</h4>
-                <p>{% trans "Classic cuts and modern styles." %}</p>
+                <p>Cortes clásicos y estilos modernos.</p>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="premium-card text-center">
                 <div class="barber-circle">
-                    <img
-                        src="{% static 'images/barber3.jpg' %}"
-                        alt="{% trans 'Professional barber' %}"
-                        class="barber-img"
-                    >
+                    <img src="{% static 'images/barber3.jpg' %}"
+                        alt="Barbero" class="barber-img">
                 </div>
-
                 <h4>?</h4>
-                <p>{% trans "Tapers, line-ups, and kids cuts." %}</p>
+                <p>Degradados, delineado de contornos y cortes para niños.</p>
             </div>
         </div>
 

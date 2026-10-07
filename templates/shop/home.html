@@ -1,51 +1,50 @@
 {% extends 'shop/base.html' %}
-{% load i18n %}
 
 {% block content %}
 
 <section class="page-header">
-    <h1>{% trans "Welcome" %}</h1>
-    <p>{% trans "Book your appointment today." %}</p>
+    <h1>Bienvenidos</h1>
+    <p>Reserva tu cita hoy.</p>
 </section>
 
 <div class="container py-5 text-center">
     <a href="{% url 'shop:book' %}" class="btn btn-gold">
-        {% trans "Book Now" %}
+        Reservar ahora
     </a>
 </div>
 
 <section class="hero">
     <div class="container">
-        <h1>{% trans "Magic Barber Salon" %}</h1>
-        <p>{% trans "Sharp fades, clean cuts, beard trims, and modern style." %}</p>
+        <h1>Magic Barber Salon</h1>
+        <p>Degradados precisos, cortes impecables, arreglo de barba y estilo moderno.</p>
         <a href="{% url 'shop:book' %}" class="btn btn-gold">
-            {% trans "Book Appointment" %}
+            Reservar cita
         </a>
     </div>
 </section>
 
 <section class="container py-5">
-    <h2 class="section-title">{% trans "Why Choose Us?" %}</h2>
+    <h2 class="section-title">¿Por qué elegirnos?</h2>
 
     <div class="row g-4">
         <div class="col-md-4">
             <div class="premium-card">
-                <h4>{% trans "Expert Barbers" %}</h4>
-                <p>{% trans "Professional barbers with experience in fades, tapers, and modern cuts." %}</p>
+                <h4>Barberos expertos</h4>
+                <p>Barberos profesionales con experiencia en degradados, cortes con desvanecido y estilos modernos.</p>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="premium-card">
-                <h4>{% trans "Easy Booking" %}</h4>
-                <p>{% trans "Schedule your appointment online in just a few clicks." %}</p>
+                <h4>Reservas fáciles</h4>
+                <p>Agenda tu cita en línea con solo unos clics.</p>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="premium-card">
-                <h4>{% trans "Premium Style" %}</h4>
-                <p>{% trans "A clean, modern barber shop experience built around confidence." %}</p>
+                <h4>Estilo de primera</h4>
+                <p>Una experiencia de barbería en un ambiente limpio y moderno para que luzcas y te sientas seguro.</p>
             </div>
         </div>
     </div>
